@@ -87,6 +87,411 @@ const injectStyles = () => {
     .diff-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: .5px; background: linear-gradient(90deg, var(--g), transparent); opacity: .7; }
     .diff-card:hover { border-color: rgba(201,168,76,.5); background: #1a1a1a; }
     .stat-item { display: flex; flex-direction: column; padding: 16px 0; }
+    @media (max-width: 480px) {
+      .f-nav { 
+        padding: 8px 16px; 
+        justify-content: center;
+      }
+      
+      .f-nav-links { 
+        display: none;
+      }
+
+      .f-nav a {
+        flex-direction: column !important;
+        gap: 6px !important;
+        width: 100%;
+      }
+
+      .f-nav a span {
+        font-size: 18px !important;
+        text-align: center !important;
+        line-height: 1.1 !important;
+      }
+
+      .f-nav-logo img { height: 40px !important; }
+
+      /* Hero adjustments */
+      #hero {
+        height: 90vh !important;
+      }
+
+      #hero > div:nth-child(3) {
+        padding-top: 40px !important;
+        padding-bottom: 60px !important;
+      }
+
+      #hero img[alt="Espaço Felicitá"] {
+        height: 240px !important;
+      }
+
+      #hero > div:nth-child(3) > div:nth-child(1) span {
+        font-size: 8px !important;
+        letter-spacing: 0.3em !important;
+      }
+
+      #hero > div:nth-child(3) > div:nth-child(3) > div {
+        height: 48px !important;
+        margin: 20px auto 0 !important;
+      }
+
+      #hero > div:nth-child(3) > div:nth-child(3) > span {
+        font-size: 36px !important;
+        letter-spacing: .04em !important;
+        margin-top: 60px !important;
+      }
+
+      /* Manifesto */
+      #celebracao {
+        padding: 40px 16px !important;
+      }
+
+      #celebracao > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+
+      #celebracao h2 {
+        font-size: 28px !important;
+        line-height: 1.15 !important;
+        margin-bottom: 6px !important;
+      }
+
+      #celebracao h2 + h2 {
+        margin-top: 4px !important;
+      }
+
+      #celebracao blockquote {
+        font-size: 20px !important;
+        line-height: 1.6 !important;
+        border-left-width: 2px !important;
+        padding-left: 16px !important;
+        margin: 18px 0 22px !important;
+      }
+
+      #celebracao p {
+        font-size: 16px !important;
+        line-height: 1.8 !important;
+      }
+
+      #celebracao > div > div > div:last-child > div {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      /* Spreads */
+      .spread {
+        height: 70vh !important;
+      }
+
+      .spread:nth-of-type(1) {
+        height: 70vh !important;
+      }
+
+      .spread:nth-of-type(2) {
+        height: 85vh !important;
+      }
+
+      .spread:nth-of-type(3) {
+        height: 80vh !important;
+      }
+
+      .spread p {
+        font-size: 24px !important;
+      }
+
+      .spread h2 {
+        font-size: 28px !important;
+      }
+
+      /* S9 "De Uma Vida que Ganha Novos Sonhos" - reposition floating logo on mobile */
+      .s9-logo-overlay {
+        position: absolute !important;
+        right: 16px !important;
+        bottom: 16px !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        z-index: 20 !important;
+      }
+
+      .s9-logo-overlay img {
+        height: 52px !important;
+        width: auto !important;
+      }
+      .spread:nth-of-type(3) > div:nth-child(3) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+      }
+
+      .spread:nth-of-type(3) img {
+        object-position: center 60% !important;
+      }
+
+      .spread:nth-of-type(3) {
+        height: 72vh !important;
+      }
+
+      /* Next portrait-style section (Kids or nearby) - shift crop to keep both faces */
+      section:nth-of-type(11) img {
+        object-position: center 35% !important;
+      }
+
+      section:nth-of-type(11) {
+        height: auto !important;
+      }
+
+      /* Equipe */
+      section:nth-of-type(4) {
+        padding: 48px 20px !important;
+      }
+
+      section:nth-of-type(4) > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      /* Diferenciais */
+      #estrutura {
+        padding: 48px 20px !important;
+      }
+
+      #estrutura > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      #estrutura > div > div > div:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      /* Mobiliário */
+      section:nth-of-type(6) {
+        padding: 48px 20px !important;
+      }
+
+      section:nth-of-type(6) > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+
+      /* Boate */
+      section:nth-of-type(8) {
+        padding: 48px 20px !important;
+      }
+
+      section:nth-of-type(8) > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      /* Buffet */
+      #gastronomia {
+        padding: 48px 20px !important;
+      }
+
+      #gastronomia > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      /* Kids */
+      section:nth-of-type(11) {
+        padding: 48px 20px !important;
+      }
+
+      section:nth-of-type(11) > div > div {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+
+      section:nth-of-type(11) > div > div > div:last-child > div {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+      }
+
+      /* Investimento */
+      #investimento {
+        padding: 48px 20px !important;
+      }
+
+      #investimento > div > div > div {
+        padding: 32px 16px !important;
+      }
+
+      #investimento > div > div > div > div {
+        grid-template-columns: 1fr !important;
+        padding: 8px 0 !important;
+      }
+
+      /* Table to blocks */
+      #investimento > div > div > div {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 24px 12px !important;
+      }
+
+      #investimento > div > div > div > div:first-child {
+        display: none !important;
+      }
+
+      .inv-table-row {
+        display: block !important;
+        padding: 20px 16px !important;
+        border: .5px solid rgba(201,168,76,.2) !important;
+        background: var(--blk2) !important;
+        text-align: center !important;
+        margin-bottom: 0 !important;
+      }
+
+      .inv-table-row span:nth-child(1) {
+        font-size: 28px !important;
+        color: var(--g) !important;
+        display: block !important;
+        margin-bottom: 16px !important;
+        font-weight: 600 !important;
+      }
+
+      .inv-table-row span:nth-child(2) {
+        font-size: 16px !important;
+        color: rgba(250,250,250,.8) !important;
+        display: block !important;
+        margin-bottom: 8px !important;
+      }
+
+      .inv-table-row span:nth-child(2)::before {
+        content: 'Seg · Qui · Dom: ' !important;
+        font-weight: 500 !important;
+        color: var(--g) !important;
+      }
+
+      .inv-table-row span:nth-child(3) {
+        font-size: 16px !important;
+        color: rgba(250,250,250,.8) !important;
+        display: block !important;
+      }
+
+      .inv-table-row span:nth-child(3)::before {
+        content: 'Sex · Sáb · Feriado: ' !important;
+        font-weight: 500 !important;
+        color: var(--g) !important;
+      }
+
+      /* Contato */
+      #contato {
+        padding: 48px 20px !important;
+      }
+
+      #contato > div:nth-child(4) > div {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      #contato > div:nth-child(5) > div {
+        flex-direction: column !important;
+        gap: 16px !important;
+      }
+
+      #contato img {
+        height: 300px !important;
+      }
+
+      #contato h2 {
+        font-size: 26px !important;
+        line-height: 1.2 !important;
+      }
+
+      #contato > div:nth-child(4) > div > span:nth-child(2) {
+        font-size: 16px !important;
+      }
+
+      #contato > div:nth-child(5) > div > span {
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        font-size: 12px !important;
+        letter-spacing: .2em !important;
+      }
+
+      #contato > div:nth-child(4) > div > span {
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+        font-size: 14px !important;
+      }
+
+      #contato > div:nth-child(4) > div {
+        min-width: 0 !important;
+      }
+
+      #contato > div:nth-child(4) > div > span:nth-child(2) {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+      }
+
+      #contato > div:nth-child(5) > div > div {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        align-items: center !important;
+      }
+
+      #contato > div:nth-child(5) > div > div span {
+        font-size: 20px !important;
+        white-space: normal !important;
+        text-align: center !important;
+      }
+
+      #contato > p {
+        font-size: 10px !important;
+        letter-spacing: .1em !important;
+        text-align: center !important;
+        max-width: 360px !important;
+        margin: 12px auto 0 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+      }
+
+      /* Spread 3 logo hide and crop adjust */
+      .spread:nth-of-type(3) > div:nth-child(3) {
+        display: none !important;
+      }
+
+      .spread:nth-of-type(3) img {
+        object-position: center 50% !important;
+      }
+
+      /* Kids image crop adjust */
+      section:nth-of-type(11) img {
+        object-position: center 35% !important;
+      }
+
+      /* Hero mobile: move logo to bottom, hide "Casamento", smaller logo */
+      #hero > div:nth-child(3) {
+        position: relative !important;
+      }
+
+      #hero > div:nth-child(3) > div:nth-child(3) {
+        display: none !important;
+      }
+
+      #hero img[alt="Espaço Felicitá"] {
+        position: absolute !important;
+        left: 50% !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: 36px !important;
+        transform: translateX(-50%) !important;
+        height: 180px !important;
+      }
+    }
   `;
   document.head.appendChild(style);
 };
@@ -404,7 +809,7 @@ export default function App() {
       <section className="spread" style={{ height: '110vh' }}>
         <img src="/images/spread-3.jpg" alt="Bolo" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.38) 42%, rgba(0,0,0,.74) 100%)' }} />
-        <div style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
+        <div className="s9-logo-overlay" style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
         <div style={{ position: 'absolute', bottom: 64, left: 56, right: 56, zIndex: 20 }}>
           <FadeIn><Orn />
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8 }}>um capítulo inesquecível</p>
