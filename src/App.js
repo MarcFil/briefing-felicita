@@ -87,7 +87,7 @@ const injectStyles = () => {
     .diff-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: .5px; background: linear-gradient(90deg, var(--g), transparent); opacity: .7; }
     .diff-card:hover { border-color: rgba(201,168,76,.5); background: #1a1a1a; }
     .stat-item { display: flex; flex-direction: column; padding: 16px 0; }
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .f-nav { 
         padding: 8px 16px; 
         justify-content: center;
@@ -110,6 +110,9 @@ const injectStyles = () => {
       }
 
       .f-nav-logo img { height: 40px !important; }
+      section { padding-left: 20px !important; padding-right: 20px !important; overflow-x: hidden !important; } * { max-width: 100vw; box-sizing: border-box; }
+      #celebracao > div > div { grid-template-columns: 1fr !important; }
+      #celebracao { padding: 48px 20px !important; }
 
       /* Hero adjustments */
       #hero {
@@ -471,25 +474,6 @@ const injectStyles = () => {
       /* Kids image crop adjust */
       section:nth-of-type(11) img {
         object-position: center 35% !important;
-      }
-
-      /* Hero mobile: move logo to bottom, hide "Casamento", smaller logo */
-      #hero > div:nth-child(3) {
-        position: relative !important;
-      }
-
-      #hero > div:nth-child(3) > div:nth-child(3) {
-        display: none !important;
-      }
-
-      #hero img[alt="Espaço Felicitá"] {
-        position: absolute !important;
-        left: 50% !important;
-        right: auto !important;
-        top: auto !important;
-        bottom: 36px !important;
-        transform: translateX(-50%) !important;
-        height: 180px !important;
       }
     }
   `;
