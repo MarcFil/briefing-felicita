@@ -713,7 +713,7 @@ export default function App() {
               <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 17, fontWeight: 300, color: 'rgba(250,250,250,.55)', maxWidth: 560, margin: '16px auto 0', lineHeight: 1.9 }}>Cada membro da nossa equipe é treinado para antecipar necessidades, resolver imprevistos com discrição absoluta e garantir que nenhum detalhe passe despercebido.</p>
             </div>
           </FadeIn>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 32 : 64, gap: 64, alignItems: 'start' }}>
+<div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 32 : 64, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {[{ t: 'Coordenador do Evento', d: 'Orquestração completa — do planejamento ao último brinde' }, { t: 'Garçons', d: 'Serviço impecável e presença discreta durante toda a celebração' }, { t: 'Porteiro', d: 'Recepção elegante e controle de acesso com cordialidade' }, { t: 'Equipe de Limpeza', d: 'Ambiente impecável mantido durante toda a celebração' }, { t: 'Equipe de Cozinha', d: 'Especialistas em experiência gastronômica de alto nível' }].map((item, i) => (
                 <FadeIn delay={i * 80} key={i}>
