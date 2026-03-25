@@ -67,8 +67,7 @@ const injectStyles = () => {
     .photo-frame:hover img { transform: scale(1.04); }
 
     .spread { position: relative; overflow: hidden; }
-    .spread-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-    .spread-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 55%, rgba(10,10,10,.88) 100%); }
+    .spread-img { position: absolute; top: -15%; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover; display: block; }    .spread-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 55%, rgba(10,10,10,.88) 100%); }
 
     .inv-table-row { display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; padding: 11px 0; border-bottom: .5px solid rgba(201,168,76,.12); transition: background .2s; }
     .inv-table-row:hover { background: var(--g05); }
@@ -87,6 +86,19 @@ const injectStyles = () => {
     .diff-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: .5px; background: linear-gradient(90deg, var(--g), transparent); opacity: .7; }
     .diff-card:hover { border-color: rgba(201,168,76,.5); background: #1a1a1a; }
     .stat-item { display: flex; flex-direction: column; padding: 16px 0; }
+    /* Hero logo overlay — desktop */
+    #hero {
+    position: relative !important;
+      }
+    .hero-logo-overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    z-index: 10;
+    pointer-events: none;
+      }
     @media (max-width: 768px) {
       .f-nav { 
         padding: 8px 16px; 
@@ -111,6 +123,7 @@ const injectStyles = () => {
 
       .f-nav-logo img { height: 40px !important; }
       section { padding-left: 20px !important; padding-right: 20px !important; overflow-x: hidden !important; } * { max-width: 100vw; box-sizing: border-box; }
+      .spread img[alt="Espaço Felicitá"] { display: none !important; }
       #celebracao > div > div { grid-template-columns: 1fr !important; }
       #celebracao { padding: 48px 20px !important; }
 
@@ -119,16 +132,18 @@ const injectStyles = () => {
         height: 90vh !important;
       }
 
+      .hero-logo-overlay {
+      width: 130px !important;
+      bottom: 1%;
+      display: block !important;
+      }
+
       #hero > div:nth-child(3) {
         padding-top: 40px !important;
         padding-bottom: 60px !important;
       }
 
-      #hero img[alt="Espaço Felicitá"] {
-        height: 240px !important;
-      }
-
-      #hero > div:nth-child(3) > div:nth-child(1) span {
+        #hero > div:nth-child(3) > div:nth-child(1) span {
         font-size: 8px !important;
         letter-spacing: 0.3em !important;
       }
@@ -479,7 +494,15 @@ const injectStyles = () => {
   `;
   document.head.appendChild(style);
 };
-
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return isMobile;
+};
 const useFadeIn = (threshold = 0.12) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -516,7 +539,7 @@ const LogoDark = ({ className = '' }) => (
     style={{ width: '70px', height: 'auto', display: 'block' }} />
 );
 // Hero central — logo preta (sobre a foto clara/quente)
-const LogoDarkLg = ({ height = 420 }) => (
+const LogoDarkLg = ({ height = 420, isMobile = false }) => (
   <img src="/images/Logodark.svg" alt="Espaço Felicitá" style={{ height, width: 'auto', display: 'block', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.8))' }} />
 );
 // Seções cream — logo preta
@@ -580,13 +603,14 @@ const gridBg = { backgroundImage: 'linear-gradient(rgba(166,129,54,.05) 1px, tra
 
 export default function App() {
   useEffect(() => { injectStyles(); }, []);
+  const isMobile = useIsMobile();
 
   return (
     <div style={{ backgroundColor: 'var(--blk)', minHeight: '100vh', overflowX: 'hidden', ...gridBg }}>
       <Nav />
 
       {/* S1 HERO */}
-      <section id="hero" className="spread" style={{ height: '100vh' }}>
+      <section id="hero" className="spread" style={{ height: '130vh' }}>
         <img className="spread-img" src="/images/hero.jpg" alt="Espaço Felicitá Unidade Palmares" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.65) 100%)' }} />
 
@@ -598,19 +622,20 @@ export default function App() {
             </span>
           </FadeIn>
           <FadeIn delay={400}>
-            <LogoDarkLg height={320} />
-          </FadeIn>
-          <FadeIn delay={700}>
-            <div style={{ width: 1, height: 64, background: 'linear-gradient(to bottom, var(--g), transparent)', margin: '28px auto 0' }} />
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 48, fontWeight: 300, color: 'var(--wht)', letterSpacing: '.06em', display: 'block', marginTop: 80 }}>Casamento</span>
+            <img src="/images/Logo com letras branca correto.svg" style={{ width: '160px', height: 'auto', display: 'none', margin: '0 auto', position: 'absolute', bottom: '120px', left: '50%', transform: 'translateX(-50%)', zIndex: 20 }} alt="Espaço Felicitá" />
           </FadeIn>
         </div>
+        <img
+          src="/images/Logodark.svg"
+          alt="Felicitá logo hero"
+          className="hero-logo-overlay"
+        />
       </section>
 
       {/* S2 MANIFESTO (CREAM) */}
-      <section id="celebracao" style={{ background: 'var(--crm)', padding: '96px 56px' }}>
+      <section id="celebracao" style={{ background: 'var(--crm)', padding: 'clamp(48px, 8vw, 96px) clamp(20px, 5vw, 56px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80, alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.2fr', gap: window.innerWidth < 768 ? 32 : 80, alignItems: 'center' }}>
             <FadeIn>
               <Frame src="/images/essence.jpg" alt="Mesa de casamento" style={{ aspectRatio: '4/5' }} imgStyle={{ objectPosition: 'center 30%' }} />
             </FadeIn>
@@ -635,7 +660,7 @@ export default function App() {
                 </p>
               </FadeIn>
               <FadeIn delay={400}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, borderTop: '1px solid rgba(232,201,126,.45)', paddingTop: 28 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 8, borderTop: '1px solid rgba(232,201,126,.45)', paddingTop: 28 }}>
                   {[{ n: '+14', l: 'Anos de história' }, { n: '3', l: 'Unidades em BH' }, { n: '180', l: 'Convidados' }, { n: 'Próprio', l: 'Buffet exclusivo' }].map((s, i) => (
                     <div key={i} className="stat-item">
                       <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 400, color: 'var(--gd)', display: 'block', lineHeight: 1.1, marginBottom: 6 }}>{s.n}</span>
@@ -651,10 +676,10 @@ export default function App() {
 
       {/* S3 SPREAD 1 */}
       <section className="spread" style={{ height: '85vh' }}>
-        <img className="spread-img" src="/images/spread-1.jpg" alt="Salão Espaço Felicitá" style={{ objectPosition: 'center 40%' }} />
+        <img className="spread-img" src="/images/spread-1.jpg" alt="Salão Espaço Felicitá" style={{ objectPosition: 'center 70%' }} />
         <div className="spread-veil" />
         <div style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div style={{ position: 'absolute', bottom: 64, left: 56, right: 56, zIndex: 20 }}>
+        <div style={{ position: 'absolute', bottom: 160, left: 56, right: 56, zIndex: 20 }}>
           <FadeIn><Orn />
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8 }}>o começo de uma história com</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(38px,5vw,68px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1 }}>Momentos Inesquecíveis</h2>
@@ -674,7 +699,7 @@ export default function App() {
               <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 17, fontWeight: 300, color: 'rgba(250,250,250,.55)', maxWidth: 560, margin: '16px auto 0', lineHeight: 1.9 }}>Cada membro da nossa equipe é treinado para antecipar necessidades, resolver imprevistos com discrição absoluta e garantir que nenhum detalhe passe despercebido.</p>
             </div>
           </FadeIn>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 32 : 64, gap: 64, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {[{ t: 'Coordenador do Evento', d: 'Orquestração completa — do planejamento ao último brinde' }, { t: 'Garçons', d: 'Serviço impecável e presença discreta durante toda a celebração' }, { t: 'Porteiro', d: 'Recepção elegante e controle de acesso com cordialidade' }, { t: 'Equipe de Limpeza', d: 'Ambiente impecável mantido durante toda a celebração' }, { t: 'Equipe de Cozinha', d: 'Especialistas em experiência gastronômica de alto nível' }].map((item, i) => (
                 <FadeIn delay={i * 80} key={i}>
@@ -693,7 +718,7 @@ export default function App() {
       {/* S5 DIFERENCIAIS (DARK2) */}
       <section id="estrutura" style={{ backgroundColor: 'var(--blk2)', padding: '80px 56px', borderTop: '.5px solid rgba(44,44,44,.6)', ...gridBg }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 72, alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.6fr', gap: isMobile ? 32 : 72, alignItems: 'start' }}>
             <FadeIn>
               <div>
                 <Ey text="Estrutura & Exclusividade" />
@@ -749,10 +774,10 @@ export default function App() {
 
       {/* S7 SPREAD 2 */}
       <section className="spread" style={{ height: '116vh' }}>
-        <img className="spread-img" src="/images/spread-2.jpg" alt="Salão" style={{ objectPosition: 'center 45%' }} />
+        <img className="spread-img" src="/images/spread-2.jpg" alt="Salão" style={{ objectPosition: 'center -180%' }} />
         <div className="spread-veil" />
         <div style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div style={{ position: 'absolute', bottom: 64, left: 56, right: 56, zIndex: 20 }}>
+        <div style={{ position: 'absolute', bottom: 160, left: 56, right: 56, zIndex: 20 }}>
           <FadeIn><Orn />
             <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8 }}>o encanto de uma</p>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px,5vw,64px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1 }}>Nova Fase Começa Aqui</h2>
