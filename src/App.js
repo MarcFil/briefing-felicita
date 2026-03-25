@@ -1026,36 +1026,62 @@ export default function App() {
         </div>
       </section>
 
-      {/* S13 CONTATO (DARK FINAL) */}
-      <section id="contato" style={{ backgroundColor: 'var(--blk)', padding: '96px 56px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderTop: '.5px solid rgba(44,44,44,.8)', ...gridBg }}>
+{/* S13 CONTATO (DARK FINAL) */}
+      <section id="contato" style={{ backgroundColor: 'var(--blk)', padding: isMobile ? '60px 24px' : '96px 56px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderTop: '.5px solid rgba(44,44,44,.8)', ...gridBg }}>
         <FadeIn>
-          <LogoLight height={400} />
+          <LogoLight height={isMobile ? 300 : 400} />
         </FadeIn>
         <Orn className="my-8" />
         <FadeIn delay={200}>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px,3vw,44px)', fontWeight: 400, color: 'var(--wht)', lineHeight: 1.3, marginBottom: 8 }}>Onde os seus sonhos</h2>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px,3vw,44px)', fontStyle: 'italic', fontWeight: 400, color: 'var(--g)', lineHeight: 1.3, marginBottom: 56 }}>se realizam</h2>
         </FadeIn>
+        
         <FadeIn delay={300}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 40, maxWidth: 900, width: '100%', marginBottom: 56 }}>
-            {[{ l: 'Instagram', v: '@espaco_felicita' }, { l: 'Telefone', v: '(31) 99620-3089' }, { l: 'Endereço', v: 'R. Cel. Jaíro Pereira, 999\nPalmares, BH' }, { l: 'Site', v: 'www.espacofelicita.com.br' }].map((c, i) => (
+          {/* 🛡️ Adicionei o isMobile no grid para os contatos não ficarem espremidos no celular */}
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4,1fr)', gap: 40, maxWidth: 900, width: '100%', marginBottom: 56 }}>
+            {[
+              { 
+                l: 'Instagram', 
+                v: <a href="https://www.instagram.com/espaco_felicita" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--wht)', textDecoration: 'none' }}>@espaco_felicita</a> 
+              }, 
+              { 
+                l: 'WhatsApp', 
+                v: (
+                  <>
+                    <a href="https://wa.me/5531971871101?text=Ol%C3%A1!%20Vim%20pela%20proposta%20de%20or%C3%A7amento%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Espa%C3%A7o%20Felicit%C3%A1." target="_blank" rel="noopener noreferrer" style={{ color: 'var(--wht)', textDecoration: 'none', display: 'block', marginBottom: 4 }}>(31) 97187-1101</a>
+                    <a href="https://wa.me/5531984086068?text=Ol%C3%A1!%20Vim%20pela%20proposta%20de%20or%C3%A7amento%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Espa%C3%A7o%20Felicit%C3%A1." target="_blank" rel="noopener noreferrer" style={{ color: 'var(--wht)', textDecoration: 'none', display: 'block' }}>(31) 98408-6068</a>
+                  </>
+                )
+              }, 
+              { 
+                l: 'Endereço', 
+                v: <a href="https://maps.app.goo.gl/GjqQxNVBU18E1pRd6?g_st=ac" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--wht)', textDecoration: 'none' }}>R. Cel. Jaíro Pereira, 999<br />Palmares, BH</a> 
+              }, 
+              { 
+                l: 'Site', 
+                v: <a href="https://www.espacofelicita.com.br/site/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--wht)', textDecoration: 'none' }}>www.espacofelicita.com.br</a> 
+              }
+            ].map((c, i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 12, fontWeight: 600, letterSpacing: '.4em', textTransform: 'uppercase', color: 'var(--g)' }}>{c.l}</span>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, color: 'var(--wht)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>{c.v}</span>
+                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 17, color: 'var(--wht)', lineHeight: 1.5 }}>{c.v}</span>
               </div>
             ))}
           </div>
         </FadeIn>
+        
         <FadeIn delay={400}>
           <div style={{ borderTop: '.5px solid rgba(44,44,44,.8)', paddingTop: 36, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, width: '100%', maxWidth: 520 }}>
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: '.4em', textTransform: 'uppercase', color: 'rgba(250,250,250,.28)' }}>Conheça também nossas casas</span>
-            <div style={{ display: 'flex', gap: 40, alignItems: 'center', fontFamily: "''Cormorant Garamond'', serif", fontStyle: 'italic', fontSize: 29, color: 'var(--gl)' }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 12 : 40, alignItems: 'center', fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 29, color: 'var(--gl)' }}>
               <span style={{ whiteSpace: 'nowrap' }}>Felicitá Cidade Nova</span>
-              <span style={{ color: 'var(--g30)' }}>·</span>
+              {!isMobile && <span style={{ color: 'var(--g30)' }}>·</span>}
               <span style={{ whiteSpace: 'nowrap' }}>Felicitá Pampulha</span>
             </div>
           </div>
         </FadeIn>
+        
         <FadeIn delay={600}>
           <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 9, fontWeight: 300, letterSpacing: '.18em', color: 'rgba(250,250,250,.18)', marginTop: 48 }}>
             Espaço Felicitá © 2026 · Unidade Palmares · Belo Horizonte, MG
