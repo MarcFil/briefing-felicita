@@ -69,6 +69,12 @@ const injectStyles = () => {
     .spread { position: relative; overflow: hidden; }
     .spread-img { position: absolute; top: -15%; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; object-fit: cover; display: block; }    .spread-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,.35) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 55%, rgba(10,10,10,.88) 100%); }
 
+    .spread-text {
+      position: absolute;
+      bottom: 250px; /* Posição para o computador - ajuste como preferir */
+      left: 100px;   /* Posição para o computador - ajuste como preferir */
+      z-index: 10;
+    }
     .inv-table-row { display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; padding: 11px 0; border-bottom: .5px solid rgba(201,168,76,.12); transition: background .2s; }
     .inv-table-row:hover { background: var(--g05); }
     .inv-table-row:last-child { border-bottom: none; }
@@ -92,7 +98,7 @@ const injectStyles = () => {
       }
     .hero-logo-overlay {
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
     width: 220px;
@@ -133,8 +139,8 @@ const injectStyles = () => {
       }
 
       .hero-logo-overlay {
-      width: 130px !important;
-      bottom: 1%;
+      width: 120px !important;
+      bottom: 18%;
       display: block !important;
       }
 
@@ -198,8 +204,9 @@ const injectStyles = () => {
       }
 
       /* Spreads */
-      .spread {
-        height: 70vh !important;
+      .spread-text {
+        bottom: 160px !important;
+        left: 56px !important;
       }
 
       .spread:nth-of-type(1) {
@@ -622,7 +629,7 @@ export default function App() {
             </span>
           </FadeIn>
           <FadeIn delay={400}>
-            <img src="/images/Logo com letras branca correto.svg" style={{ width: '160px', height: 'auto', display: 'none', margin: '0 auto', position: 'absolute', bottom: '120px', left: '50%', transform: 'translateX(-50%)', zIndex: 20 }} alt="Espaço Felicitá" />
+            <div className="spread-text"></div>
           </FadeIn>
         </div>
         <img
@@ -679,10 +686,17 @@ export default function App() {
         <img className="spread-img" src="/images/spread-1.jpg" alt="Salão Espaço Felicitá" style={{ objectPosition: 'center 70%' }} />
         <div className="spread-veil" />
         <div style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div style={{ position: 'absolute', bottom: 160, left: 56, right: 56, zIndex: 20 }}>
-          <FadeIn><Orn />
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8 }}>o começo de uma história com</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(38px,5vw,68px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1 }}>Momentos Inesquecíveis</h2>
+        <div style={{ position: 'absolute', bottom: isMobile ? 100 : 160, left: isMobile ? 24 : 56, right: isMobile ? 24 : 56, zIndex: 20, textAlign: 'left' }}>
+          <FadeIn>
+            <div style={{ textAlign: 'left' }}>
+              <Orn />
+            </div>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: isMobile ? 22 : 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8, textAlign: 'left' }}>
+              o começo de uma história com
+            </p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: isMobile ? 34 : 'clamp(38px,5vw,68px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1, textAlign: 'left' }}>
+              Momentos Inesquecíveis
+            </h2>
           </FadeIn>
         </div>
       </section>
@@ -772,15 +786,31 @@ export default function App() {
         </div>
       </section>
 
-      {/* S7 SPREAD 2 */}
-      <section className="spread" style={{ height: '116vh' }}>
-        <img className="spread-img" src="/images/spread-2.jpg" alt="Salão" style={{ objectPosition: 'center -180%' }} />
+{/* S7 SPREAD 2 */}
+      <section className="spread" style={{ height: isMobile ? '75vh' : '116vh' }}>
+        <img 
+          className="spread-img" 
+          src="/images/spread-2.jpg" 
+          alt="Salão" 
+          style={{ 
+            objectPosition: isMobile ? '25% top' : 'center -180%',
+            top: isMobile ? '0%' : '-15%' /* 👈 O segredo está aqui! Zeramos o topo no celular */
+          }} 
+        />
         <div className="spread-veil" />
         <div style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div style={{ position: 'absolute', bottom: 160, left: 56, right: 56, zIndex: 20 }}>
-          <FadeIn><Orn />
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8 }}>o encanto de uma</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px,5vw,64px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1 }}>Nova Fase Começa Aqui</h2>
+        
+<div style={{ position: 'absolute', bottom: isMobile ? 40 : 160, left: isMobile ? 24 : 56, right: isMobile ? 24 : 56, zIndex: 20, textAlign: 'left' }}>
+          <FadeIn>
+            <div style={{ textAlign: 'left' }}>
+              <Orn />
+            </div>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: isMobile ? 22 : 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8, textAlign: 'left', textShadow: isMobile ? '2px 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
+              o encanto de uma
+            </p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: isMobile ? 34 : 'clamp(36px,5vw,64px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1, textAlign: 'left', textShadow: isMobile ? '2px 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
+              Nova Fase Começa Aqui
+            </h2>
           </FadeIn>
         </div>
       </section>
@@ -814,15 +844,39 @@ export default function App() {
         </div>
       </section>
 
-      {/* S9 SPREAD 3 */}
+{/* S9 SPREAD 3 */}
       <section className="spread" style={{ height: '110vh' }}>
-        <img src="/images/spread-3.jpg" alt="Bolo" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
+        <img 
+          src="/images/spread-3.jpg" 
+          alt="Casal de Noivos" 
+          style={{ 
+            position: 'absolute', 
+            inset: 0, 
+            width: '100%', 
+            height: '100%', 
+            objectFit: 'cover', 
+            /* Enquadramento blindado anterior que funcionou */
+            objectPosition: isMobile ? '60% 15%' : 'center 40%' 
+          }} 
+        />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.38) 42%, rgba(0,0,0,.74) 100%)' }} />
         <div className="s9-logo-overlay" style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div style={{ position: 'absolute', bottom: 64, left: 56, right: 56, zIndex: 20 }}>
-          <FadeIn><Orn />
-            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8 }}>um capítulo inesquecível</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(34px,4.5vw,60px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1 }}>De Uma Vida que Ganha Novos Sonhos</h2>
+        
+        {/* 👉 AJUSTE BLINDADO DO TEXTO PARA MOBILE */}
+{/* 👉 AJUSTE DO ELEVADOR (Descer Texto no Mobile) */}
+        <div style={{ 
+          position: 'absolute', 
+          /* 🛡️ BLINDAGEM: Mobile desce para 24, Desktop mantém 54 */
+          bottom: isMobile ? 24 : 54, 
+          left: isMobile ? 24 : 56, 
+          right: isMobile ? 24 : 56, 
+          zIndex: 20, 
+          textAlign: isMobile ? 'left' : 'inherit'
+        }}>
+          <FadeIn>
+            <div style={{ textAlign: isMobile ? 'left' : 'inherit' }}><Orn /></div>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8, textAlign: isMobile ? 'left' : 'inherit' }}>um capítulo inesquecível</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(34px,4.5vw,60px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1, textAlign: isMobile ? 'left' : 'inherit' }}>De Uma Vida que Ganha Novos Sonhos</h2>
           </FadeIn>
         </div>
       </section>
@@ -921,11 +975,36 @@ export default function App() {
               {[{ top: -1, left: -1, borderTop: '2px solid var(--g)', borderLeft: '2px solid var(--g)' }, { top: -1, right: -1, borderTop: '2px solid var(--g)', borderRight: '2px solid var(--g)' }, { bottom: -1, left: -1, borderBottom: '2px solid var(--g)', borderLeft: '2px solid var(--g)' }, { bottom: -1, right: -1, borderBottom: '2px solid var(--g)', borderRight: '2px solid var(--g)' }].map((s, i) => (
                 <div key={i} style={{ position: 'absolute', width: 18, height: 18, ...s }} />
               ))}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', paddingBottom: 20, marginBottom: 8, borderBottom: '.5px solid rgba(201,168,76,.25)' }}>
-                {['Convidados', 'Seg · Qui · Dom', 'Sex · Sáb · Feriado'].map((h, i) => (
-                  <span key={i} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 9, fontWeight: 600, letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--g)', textAlign: i === 0 ? 'left' : 'center' }}>{h}</span>
-                ))}
-              </div>
+{isMobile ? (
+          /* BLINDAGEM MOBILE: Celular fica em coluna e centralizado */
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 20, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,.1)', gap: 12 }}>
+            <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 11, fontWeight: 600, color: 'var(--g)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+              Convidados
+            </span>
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: '0 0 6px 0', textTransform: 'uppercase' }}>Seg · Qui · Dom</p>
+              <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: 0, textTransform: 'uppercase' }}>Sex · Sáb · Feriado</p>
+            </div>
+          </div>
+        ) : (
+          /* BLINDAGEM DESKTOP: Retorna as 3 colunas, mas agora centralizando a 2ª e a 3ª */
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', paddingBottom: 20, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,.1)' }}>
+            {['Convidados', 'Seg · Qui · Dom', 'Sex · Sáb · Feriado'].map((h, i) => (
+              <span key={i} style={{ 
+                fontFamily: "'Montserrat', sans-serif", 
+                fontSize: 9, 
+                fontWeight: 600, 
+                color: 'var(--g)', 
+                letterSpacing: '0.2em', 
+                textTransform: 'uppercase',
+                /* 👇 O segredo do alinhamento: a 1ª coluna (0) fica na esquerda, o resto no centro 👇 */
+                textAlign: i === 0 ? 'left' : 'center'
+              }}>
+                {h}
+              </span>
+            ))}
+          </div>
+        )}
               {[[60, '34.000,00', '36.600,00'], [70, '36.000,00', '38.600,00'], [80, '38.000,00', '40.600,00'], [90, '40.000,00', '42.600,00'], [100, '42.000,00', '44.600,00'], [110, '44.000,00', '46.600,00'], [120, '46.000,00', '48.600,00'], [130, '48.000,00', '50.600,00'], [140, '50.000,00', '52.600,00'], [150, '52.000,00', '54.600,00'], [160, '54.000,00', '56.600,00'], [170, '56.000,00', '58.600,00'], [180, '58.000,00', '60.600,00'], [190, '60.000,00', '62.600,00'], [200, '62.000,00', '64.600,00']].map(([pax, v1, v2], i) => (
                 <div key={i} className="inv-table-row">
                   <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 500, color: 'var(--g)' }}>{pax}</span>
