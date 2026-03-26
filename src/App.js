@@ -1034,7 +1034,7 @@ export default function App() {
         
         <FadeIn delay={300}>
           {/* 🛡️ Adicionei o isMobile no grid para os contatos não ficarem espremidos no celular */}
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4,1fr)', gap: 40, maxWidth: 900, width: '100%', marginBottom: 56 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 40, maxWidth: 900, width: '100%', marginBottom: 56 }}>
             {[
               { 
                 l: 'Instagram', 
