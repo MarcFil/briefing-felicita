@@ -637,7 +637,7 @@ export default function App() {
       {/* S2 MANIFESTO (CREAM) */}
       <section id="celebracao" style={{ background: 'var(--crm)', padding: 'clamp(48px, 8vw, 96px) clamp(20px, 5vw, 56px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.2fr', gap: window.innerWidth < 768 ? 32 : 80, alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.2fr', gap: isMobile ? 32 : 80, alignItems: 'center' }}>
             <FadeIn>
               <Frame src="/images/essence.jpg" alt="Mesa de casamento" style={{ aspectRatio: '4/5' }} imgStyle={{ objectPosition: 'center 30%' }} />
             </FadeIn>
