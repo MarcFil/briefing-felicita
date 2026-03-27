@@ -31,7 +31,6 @@ const injectStyles = () => {
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── NAV ── */
     .f-nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       display: flex; align-items: center; justify-content: space-between;
@@ -40,7 +39,7 @@ const injectStyles = () => {
       backdrop-filter: blur(16px);
       border-bottom: .5px solid var(--g20);
       transition: padding .35s ease;
-    }
+      }
     .f-nav.compact { padding: 10px 56px; }
     .f-nav-links { display: flex; gap: 36px; list-style: none; }
     .f-nav-links a {
@@ -51,10 +50,10 @@ const injectStyles = () => {
       transition: color .2s;
     }
     .f-nav-links a:hover { color: var(--g); }
+
     .f-nav-logo { display: flex; align-items: center; }
     .f-nav-logo img { height: 52px; width: auto; display: block; }
 
-    /* ── PHOTO FRAME ── */
     .photo-frame { position: relative; }
     .photo-frame-border { position: absolute; inset: 0; border: .5px solid var(--g30); z-index: 2; pointer-events: none; }
     .photo-frame::before, .photo-frame::after { content: ''; position: absolute; width: 22px; height: 22px; z-index: 3; }
@@ -75,7 +74,6 @@ const injectStyles = () => {
       left: 100px;
       z-index: 10;
     }
-
     .inv-table-row { display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; padding: 11px 0; border-bottom: .5px solid rgba(201,168,76,.12); transition: background .2s; }
     .inv-table-row:hover { background: var(--g05); }
     .inv-table-row:last-child { border-bottom: none; }
@@ -94,216 +92,70 @@ const injectStyles = () => {
     .diff-card:hover { border-color: rgba(201,168,76,.5); background: #1a1a1a; }
     .stat-item { display: flex; flex-direction: column; padding: 16px 0; }
 
-    /* Hero logo overlay */
     #hero { position: relative !important; }
     .hero-logo-overlay {
-      position: absolute; bottom: 15%; left: 50%;
-      transform: translateX(-50%); width: 220px; z-index: 10; pointer-events: none;
-    }
-
-    /* ── RESPONSIVE CLASSES (substituem isMobile no JSX) ── */
-
-    /* S2 Manifesto grid */
-    .manifesto-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    /* S2 Stats grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      border-top: 1px solid rgba(232,201,126,.45);
-      padding-top: 28px;
-    }
-
-    /* S3 Spread 1 text block */
-    .spread1-text {
       position: absolute;
-      bottom: 160px; left: 56px; right: 56px;
-      z-index: 20; text-align: left;
-    }
-    .spread1-p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 30px; font-weight: 300;
-      color: rgba(250,250,250,.85); display: block; margin-bottom: 8px; text-align: left;
-    }
-    .spread1-h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px,5vw,68px); font-weight: 700;
-      color: var(--g); line-height: 1.1; text-align: left;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      z-index: 10;
+      pointer-events: none;
     }
 
-    /* S4 Equipe grid */
-    .equipe-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px; align-items: start;
-    }
-
-    /* S5 Diferenciais grid */
-    .diferenciais-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 72px; align-items: start;
-    }
-
-    /* S7 Spread 2 */
-    .spread2-section { height: 116vh; }
-    .spread2-img { object-position: center -180%; top: -15%; }
-    .spread2-text {
-      position: absolute;
-      bottom: 160px; left: 56px; right: 56px;
-      z-index: 20; text-align: left;
-    }
-    .spread2-p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 30px; font-weight: 300;
-      color: rgba(250,250,250,.85); display: block; margin-bottom: 8px; text-align: left;
-    }
-    .spread2-h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(36px,5vw,64px); font-weight: 700;
-      color: var(--g); line-height: 1.1; text-align: left;
-    }
-
-    /* S9 Spread 3 */
-    .spread3-img { object-position: center 40%; }
-    .spread3-text {
-      position: absolute;
-      bottom: 54px; left: 56px; right: 56px; z-index: 20;
-    }
-    .spread3-p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 30px; font-weight: 300;
-      color: rgba(250,250,250,.85); display: block; margin-bottom: 8px;
-    }
-    .spread3-h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(34px,4.5vw,60px); font-weight: 700;
-      color: var(--g); line-height: 1.1;
-    }
-
-    /* S12 Investimento header — show/hide por breakpoint */
-    .inv-header-mobile { display: none; }
-    .inv-header-desktop { display: grid; }
-
-    /* S13 Contato */
-    .contato-section { padding: 96px 56px; }
-    .contato-logo img { height: 400px; width: auto; display: block; }
-    .unidades-row {
-      display: flex; flex-direction: row;
-      gap: 40px; align-items: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: 29px; color: var(--gl);
-    }
-    .unidades-sep { color: var(--g30); }
-
-    /* ══════════════════════════════════════
-       MEDIA QUERIES — breakpoint 768px
-    ══════════════════════════════════════ */
-    @media (max-width: 767px) {
-
-      .f-nav {
-        padding: 8px 16px !important;
-        justify-content: center;
-      }
+    @media (max-width: 768px) {
+      .f-nav { padding: 8px 16px; justify-content: center; }
       .f-nav-links { display: none; }
-      .f-nav a {
-        flex-direction: column !important;
-        gap: 6px !important;
-        width: 100%;
-      }
-      .f-nav a span {
-        font-size: 18px !important;
-        text-align: center !important;
-        line-height: 1.1 !important;
-      }
+      .f-nav a { flex-direction: column !important; gap: 6px !important; width: 100%; }
+      .f-nav a span { font-size: 18px !important; text-align: center !important; line-height: 1.1 !important; }
       .f-nav-logo img { height: 40px !important; }
-
-      section { padding-left: 20px !important; padding-right: 20px !important; overflow-x: hidden !important; }
-      * { max-width: 100vw; box-sizing: border-box; }
-
+      section { padding-left: 20px !important; padding-right: 20px !important; overflow-x: hidden !important; } * { max-width: 100vw; box-sizing: border-box; }
       .spread img[alt="Espaço Felicitá"] { display: none !important; }
-
-      /* Hero */
+      #celebracao > div > div { grid-template-columns: 1fr !important; }
+      #celebracao { padding: 48px 20px !important; }
       #hero { height: 90vh !important; }
       .hero-logo-overlay { width: 120px !important; bottom: 18%; display: block !important; }
       #hero > div:nth-child(3) { padding-top: 40px !important; padding-bottom: 60px !important; }
       #hero > div:nth-child(3) > div:nth-child(1) span { font-size: 8px !important; letter-spacing: 0.3em !important; }
       #hero > div:nth-child(3) > div:nth-child(3) > div { height: 48px !important; margin: 20px auto 0 !important; }
       #hero > div:nth-child(3) > div:nth-child(3) > span { font-size: 36px !important; letter-spacing: .04em !important; margin-top: 60px !important; }
-
-      /* S2 Manifesto */
-      .manifesto-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
       #celebracao { padding: 40px 16px !important; }
+      #celebracao > div > div { grid-template-columns: 1fr !important; gap: 32px !important; }
       #celebracao h2 { font-size: 28px !important; line-height: 1.15 !important; margin-bottom: 6px !important; }
       #celebracao h2 + h2 { margin-top: 4px !important; }
       #celebracao blockquote { font-size: 20px !important; line-height: 1.6 !important; border-left-width: 2px !important; padding-left: 16px !important; margin: 18px 0 22px !important; }
       #celebracao p { font-size: 16px !important; line-height: 1.8 !important; }
-
-      /* S3 Spread 1 */
-      .spread1-text { bottom: 100px !important; left: 24px !important; right: 24px !important; }
-      .spread1-p { font-size: 22px !important; }
-      .spread1-h2 { font-size: 34px !important; }
+      #celebracao > div > div > div:last-child > div { grid-template-columns: 1fr !important; gap: 12px !important; }
+      .spread-text { bottom: 160px !important; left: 56px !important; }
       .spread:nth-of-type(1) { height: 70vh !important; }
+      .spread:nth-of-type(2) { height: 85vh !important; }
+      .spread:nth-of-type(3) { height: 80vh !important; }
       .spread p { font-size: 24px !important; }
       .spread h2 { font-size: 28px !important; }
-
-      /* S4 Equipe */
-      .equipe-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-      section:nth-of-type(4) { padding: 48px 20px !important; }
-
-      /* S5 Diferenciais */
-      .diferenciais-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-      #estrutura { padding: 48px 20px !important; }
-      #estrutura > div > div > div:last-child { grid-template-columns: 1fr !important; gap: 12px !important; }
-
-      /* S6 Mobiliário */
-      section:nth-of-type(6) { padding: 48px 20px !important; }
-      section:nth-of-type(6) > div > div { grid-template-columns: 1fr !important; gap: 32px !important; }
-
-      /* S7 Spread 2 */
-      .spread2-section { height: 75vh !important; }
-      .spread2-img { object-position: 25% top !important; top: 0% !important; }
-      .spread2-text { bottom: 40px !important; left: 24px !important; right: 24px !important; }
-      .spread2-p { font-size: 22px !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.7) !important; }
-      .spread2-h2 { font-size: 34px !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.7) !important; }
-      .spread:nth-of-type(2) { height: 85vh !important; }
-
-      /* S8 Boate */
-      section:nth-of-type(8) { padding: 48px 20px !important; }
-      section:nth-of-type(8) > div > div { grid-template-columns: 1fr !important; gap: 40px !important; }
-
-      /* S9 Spread 3 */
-      .spread3-img { object-position: 60% 15% !important; }
-      .spread3-text { bottom: 24px !important; left: 24px !important; right: 24px !important; text-align: left !important; }
-      .spread3-p { text-align: left !important; }
-      .spread3-h2 { text-align: left !important; }
       .s9-logo-overlay { position: absolute !important; right: 16px !important; bottom: 16px !important; left: auto !important; top: auto !important; transform: none !important; z-index: 20 !important; }
       .s9-logo-overlay img { height: 52px !important; width: auto !important; }
       .spread:nth-of-type(3) > div:nth-child(3) { display: none !important; visibility: hidden !important; opacity: 0 !important; }
-      .spread:nth-of-type(3) img { object-position: center 50% !important; }
+      .spread:nth-of-type(3) img { object-position: center 60% !important; }
       .spread:nth-of-type(3) { height: 72vh !important; }
-
-      /* S10 Buffet */
+      section:nth-of-type(11) img { object-position: center 35% !important; }
+      section:nth-of-type(11) { height: auto !important; }
+      section:nth-of-type(4) { padding: 48px 20px !important; }
+      section:nth-of-type(4) > div > div { grid-template-columns: 1fr !important; gap: 40px !important; }
+      #estrutura { padding: 48px 20px !important; }
+      #estrutura > div > div { grid-template-columns: 1fr !important; gap: 40px !important; }
+      #estrutura > div > div > div:last-child { grid-template-columns: 1fr !important; gap: 12px !important; }
+      section:nth-of-type(6) { padding: 48px 20px !important; }
+      section:nth-of-type(6) > div > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+      section:nth-of-type(8) { padding: 48px 20px !important; }
+      section:nth-of-type(8) > div > div { grid-template-columns: 1fr !important; gap: 40px !important; }
       #gastronomia { padding: 48px 20px !important; }
       #gastronomia > div > div { grid-template-columns: 1fr !important; gap: 40px !important; }
-
-      /* S11 Kids */
-      section:nth-of-type(11) { padding: 48px 20px !important; height: auto !important; }
+      section:nth-of-type(11) { padding: 48px 20px !important; }
       section:nth-of-type(11) > div > div { grid-template-columns: 1fr !important; gap: 40px !important; }
       section:nth-of-type(11) > div > div > div:last-child > div { grid-template-columns: 1fr !important; gap: 0 !important; }
-      section:nth-of-type(11) img { object-position: center 35% !important; }
-
-      /* S12 Investimento */
-      .inv-header-mobile { display: flex !important; }
-      .inv-header-desktop { display: none !important; }
       #investimento { padding: 48px 20px !important; }
+      #investimento > div > div > div { padding: 32px 16px !important; }
+      #investimento > div > div > div > div { grid-template-columns: 1fr !important; padding: 8px 0 !important; }
       #investimento > div > div > div { display: flex !important; flex-direction: column !important; gap: 16px !important; padding: 24px 12px !important; }
       #investimento > div > div > div > div:first-child { display: none !important; }
       .inv-table-row { display: block !important; padding: 20px 16px !important; border: .5px solid rgba(201,168,76,.2) !important; background: var(--blk2) !important; text-align: center !important; margin-bottom: 0 !important; }
@@ -312,29 +164,35 @@ const injectStyles = () => {
       .inv-table-row span:nth-child(2)::before { content: 'Seg · Qui · Dom: ' !important; font-weight: 500 !important; color: var(--g) !important; }
       .inv-table-row span:nth-child(3) { font-size: 16px !important; color: rgba(250,250,250,.8) !important; display: block !important; }
       .inv-table-row span:nth-child(3)::before { content: 'Sex · Sáb · Feriado: ' !important; font-weight: 500 !important; color: var(--g) !important; }
-
-      /* S13 Contato */
-      .contato-section { padding: 60px 24px !important; }
-      .contato-logo img { height: 300px !important; }
-      .unidades-row { flex-direction: column !important; gap: 12px !important; }
-      .unidades-sep { display: none !important; }
       #contato { padding: 48px 20px !important; }
       #contato > div:nth-child(4) > div { display: grid !important; grid-template-columns: 1fr !important; gap: 24px !important; }
       #contato > div:nth-child(5) > div { flex-direction: column !important; gap: 16px !important; }
       #contato img { height: 300px !important; }
       #contato h2 { font-size: 26px !important; line-height: 1.2 !important; }
-      #contato > div:nth-child(4) > div > span:nth-child(2) { font-size: 16px !important; min-width: 0 !important; max-width: 100% !important; overflow-wrap: anywhere !important; word-break: break-word !important; }
+      #contato > div:nth-child(4) > div > span:nth-child(2) { font-size: 16px !important; }
       #contato > div:nth-child(5) > div > span { white-space: normal !important; word-break: break-word !important; overflow-wrap: anywhere !important; font-size: 12px !important; letter-spacing: .2em !important; }
       #contato > div:nth-child(4) > div > span { white-space: normal !important; word-break: break-word !important; overflow-wrap: anywhere !important; font-size: 14px !important; }
       #contato > div:nth-child(4) > div { min-width: 0 !important; }
+      #contato > div:nth-child(4) > div > span:nth-child(2) { min-width: 0 !important; max-width: 100% !important; overflow-wrap: anywhere !important; word-break: break-word !important; }
       #contato > div:nth-child(5) > div > div { display: flex !important; flex-direction: column !important; gap: 12px !important; width: 100% !important; align-items: center !important; }
       #contato > div:nth-child(5) > div > div span { font-size: 20px !important; white-space: normal !important; text-align: center !important; }
       #contato > p { font-size: 10px !important; letter-spacing: .1em !important; text-align: center !important; max-width: 360px !important; margin: 12px auto 0 !important; white-space: normal !important; word-break: break-word !important; }
+      .spread:nth-of-type(3) > div:nth-child(3) { display: none !important; }
+      .spread:nth-of-type(3) img { object-position: center 50% !important; }
+      section:nth-of-type(11) img { object-position: center 35% !important; }
     }
   `;
   document.head.appendChild(style);
 };
-
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return isMobile;
+};
 const useFadeIn = (threshold = 0.12) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -424,6 +282,7 @@ const gridBg = { backgroundImage: 'linear-gradient(rgba(166,129,54,.05) 1px, tra
 
 export default function App() {
   useEffect(() => { injectStyles(); }, []);
+  const isMobile = useIsMobile();
 
   return (
     <div style={{ backgroundColor: 'var(--blk)', minHeight: '100vh', overflowX: 'hidden', ...gridBg }}>
@@ -449,7 +308,7 @@ export default function App() {
       {/* S2 MANIFESTO (CREAM) */}
       <section id="celebracao" style={{ background: 'var(--crm)', padding: 'clamp(48px, 8vw, 96px) clamp(20px, 5vw, 56px)' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div className="manifesto-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.2fr', gap: isMobile ? 32 : 80, alignItems: 'center' }}>
             <FadeIn>
               <Frame src="/images/essence.jpg" alt="Mesa de casamento" style={{ aspectRatio: '4/5' }} imgStyle={{ objectPosition: 'center 30%' }} />
             </FadeIn>
@@ -474,7 +333,7 @@ export default function App() {
                 </p>
               </FadeIn>
               <FadeIn delay={400}>
-                <div className="stats-grid">
+                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 8, borderTop: '1px solid rgba(232,201,126,.45)', paddingTop: 28 }}>
                   {[{ n: '+14', l: 'Anos de história' }, { n: '3', l: 'Unidades em BH' }, { n: '180', l: 'Convidados' }, { n: 'Próprio', l: 'Buffet exclusivo' }].map((s, i) => (
                     <div key={i} className="stat-item">
                       <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 400, color: 'var(--gd)', display: 'block', lineHeight: 1.1, marginBottom: 6 }}>{s.n}</span>
@@ -493,11 +352,15 @@ export default function App() {
         <img className="spread-img" src="/images/spread-1.jpg" alt="Salão Espaço Felicitá" style={{ objectPosition: 'center 70%' }} />
         <div className="spread-veil" />
         <div style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div className="spread1-text">
+        <div style={{ position: 'absolute', bottom: isMobile ? 100 : 160, left: isMobile ? 24 : 56, right: isMobile ? 24 : 56, zIndex: 20, textAlign: 'left' }}>
           <FadeIn>
             <div style={{ textAlign: 'left' }}><Orn /></div>
-            <p className="spread1-p">o começo de uma história com</p>
-            <h2 className="spread1-h2">Momentos Inesquecíveis</h2>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: isMobile ? 22 : 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8, textAlign: 'left' }}>
+              o começo de uma história com
+            </p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: isMobile ? 34 : 'clamp(38px,5vw,68px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1, textAlign: 'left' }}>
+              Momentos Inesquecíveis
+            </h2>
           </FadeIn>
         </div>
       </section>
@@ -514,7 +377,7 @@ export default function App() {
               <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 17, fontWeight: 300, color: 'rgba(250,250,250,.55)', maxWidth: 560, margin: '16px auto 0', lineHeight: 1.9 }}>Cada membro da nossa equipe é treinado para antecipar necessidades, resolver imprevistos com discrição absoluta e garantir que nenhum detalhe passe despercebido.</p>
             </div>
           </FadeIn>
-          <div className="equipe-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 32 : 64, alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
               {[{ t: 'Coordenador do Evento', d: 'Orquestração completa — do planejamento ao último brinde' }, { t: 'Garçons', d: 'Serviço impecável e presença discreta durante toda a celebração' }, { t: 'Porteiro', d: 'Recepção elegante e controle de acesso com cordialidade' }, { t: 'Equipe de Limpeza', d: 'Ambiente impecável mantido durante toda a celebração' }, { t: 'Equipe de Cozinha', d: 'Especialistas em experiência gastronômica de alto nível' }].map((item, i) => (
                 <FadeIn delay={i * 80} key={i}>
@@ -533,7 +396,7 @@ export default function App() {
       {/* S5 DIFERENCIAIS (DARK2) */}
       <section id="estrutura" style={{ backgroundColor: 'var(--blk2)', padding: '80px 56px', borderTop: '.5px solid rgba(44,44,44,.6)', ...gridBg }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div className="diferenciais-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.6fr', gap: isMobile ? 32 : 72, alignItems: 'start' }}>
             <FadeIn>
               <div>
                 <Ey text="Estrutura & Exclusividade" />
@@ -588,15 +451,19 @@ export default function App() {
       </section>
 
       {/* S7 SPREAD 2 */}
-      <section className="spread spread2-section">
-        <img className="spread-img spread2-img" src="/images/spread-2.jpg" alt="Salão" />
+      <section className="spread" style={{ height: isMobile ? '75vh' : '116vh' }}>
+        <img className="spread-img" src="/images/spread-2.jpg" alt="Salão" style={{ objectPosition: isMobile ? '25% top' : 'center -180%', top: isMobile ? '0%' : '-15%' }} />
         <div className="spread-veil" />
         <div style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div className="spread2-text">
+        <div style={{ position: 'absolute', bottom: isMobile ? 40 : 160, left: isMobile ? 24 : 56, right: isMobile ? 24 : 56, zIndex: 20, textAlign: 'left' }}>
           <FadeIn>
             <div style={{ textAlign: 'left' }}><Orn /></div>
-            <p className="spread2-p">o encanto de uma</p>
-            <h2 className="spread2-h2">Nova Fase Começa Aqui</h2>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: isMobile ? 22 : 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8, textAlign: 'left', textShadow: isMobile ? '2px 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
+              o encanto de uma
+            </p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: isMobile ? 34 : 'clamp(36px,5vw,64px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1, textAlign: 'left', textShadow: isMobile ? '2px 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
+              Nova Fase Começa Aqui
+            </h2>
           </FadeIn>
         </div>
       </section>
@@ -632,19 +499,14 @@ export default function App() {
 
       {/* S9 SPREAD 3 */}
       <section className="spread" style={{ height: '110vh' }}>
-        <img
-          src="/images/spread-3.jpg"
-          alt="Casal de Noivos"
-          className="spread3-img"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-        />
+        <img src="/images/spread-3.jpg" alt="Casal de Noivos" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: isMobile ? '60% 15%' : 'center 40%' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.38) 42%, rgba(0,0,0,.74) 100%)' }} />
         <div className="s9-logo-overlay" style={{ position: 'absolute', top: 28, right: 40, zIndex: 20 }}><LogoDark height={52} /></div>
-        <div className="spread3-text">
+        <div style={{ position: 'absolute', bottom: isMobile ? 24 : 54, left: isMobile ? 24 : 56, right: isMobile ? 24 : 56, zIndex: 20, textAlign: isMobile ? 'left' : 'inherit' }}>
           <FadeIn>
-            <div><Orn /></div>
-            <p className="spread3-p">um capítulo inesquecível</p>
-            <h2 className="spread3-h2">De Uma Vida que Ganha Novos Sonhos</h2>
+            <div style={{ textAlign: isMobile ? 'left' : 'inherit' }}><Orn /></div>
+            <p style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 30, fontWeight: 300, color: 'rgba(250,250,250,.85)', display: 'block', marginBottom: 8, textAlign: isMobile ? 'left' : 'inherit' }}>um capítulo inesquecível</p>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(34px,4.5vw,60px)', fontWeight: 700, color: 'var(--g)', lineHeight: 1.1, textAlign: isMobile ? 'left' : 'inherit' }}>De Uma Vida que Ganha Novos Sonhos</h2>
           </FadeIn>
         </div>
       </section>
@@ -743,26 +605,22 @@ export default function App() {
               {[{ top: -1, left: -1, borderTop: '2px solid var(--g)', borderLeft: '2px solid var(--g)' }, { top: -1, right: -1, borderTop: '2px solid var(--g)', borderRight: '2px solid var(--g)' }, { bottom: -1, left: -1, borderBottom: '2px solid var(--g)', borderLeft: '2px solid var(--g)' }, { bottom: -1, right: -1, borderBottom: '2px solid var(--g)', borderRight: '2px solid var(--g)' }].map((s, i) => (
                 <div key={i} style={{ position: 'absolute', width: 18, height: 18, ...s }} />
               ))}
-
-              {/* Header Mobile — visível só no celular via CSS */}
-              <div className="inv-header-mobile" style={{ flexDirection: 'column', alignItems: 'center', paddingBottom: 20, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,.1)', gap: 12 }}>
-                <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 11, fontWeight: 600, color: 'var(--g)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Convidados</span>
-                <div style={{ textAlign: 'center' }}>
-                  <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: '0 0 6px 0', textTransform: 'uppercase' }}>Seg · Qui · Dom</p>
-                  <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: 0, textTransform: 'uppercase' }}>Sex · Sáb · Feriado</p>
+              {isMobile ? (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: 20, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,.1)', gap: 12 }}>
+                  <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 11, fontWeight: 600, color: 'var(--g)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Convidados</span>
+                  <div style={{ textAlign: 'center' }}>
+                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: '0 0 6px 0', textTransform: 'uppercase' }}>Seg · Qui · Dom</p>
+                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: 0, textTransform: 'uppercase' }}>Sex · Sáb · Feriado</p>
+                  </div>
                 </div>
-              </div>
-
-              {/* Header Desktop — visível só no desktop via CSS */}
-              <div className="inv-header-desktop" style={{ gridTemplateColumns: '1fr 1.5fr 1.5fr', paddingBottom: 20, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,.1)' }}>
-                {['Convidados', 'Seg · Qui · Dom', 'Sex · Sáb · Feriado'].map((h, i) => (
-                  <span key={i} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 9, fontWeight: 600, color: 'var(--g)', letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: i === 0 ? 'left' : 'center' }}>
-                    {h}
-                  </span>
-                ))}
-              </div>
-
-              {[[60, '34.000,00', '36.600,00'], [70, '36.000,00', '38.600,00'], [80, '38.000,00', '40.600,00'], [90, '40.000,00', '42.600,00'], [100, '42.000,00', '44.600,00'], [110, '44.000,00', '46.600,00'], [120, '46.000,00', '48.600,00'], [130, '48.000,00', '50.600,00'], [140, '50.000,00', '52.600,00'], [150, '52.000,00', '54.600,00'], [160, '54.000,00', '56.600,00'], [170, '56.000,00', '58.600,00'], [180, '58.000,00', '60.600,00'], [190, '60.000,00', '62.600,00'], [200, '62.000,00', '64.600,00']].map(([pax, v1, v2], i) => (
+              ) : (
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', paddingBottom: 20, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,.1)' }}>
+                  {['Convidados', 'Seg · Qui · Dom', 'Sex · Sáb · Feriado'].map((h, i) => (
+                    <span key={i} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 9, fontWeight: 600, color: 'var(--g)', letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: i === 0 ? 'left' : 'center' }}>{h}</span>
+                  ))}
+                </div>
+              )}
+              {[[60,'34.000,00','36.600,00'],[70,'36.000,00','38.600,00'],[80,'38.000,00','40.600,00'],[90,'40.000,00','42.600,00'],[100,'42.000,00','44.600,00'],[110,'44.000,00','46.600,00'],[120,'46.000,00','48.600,00'],[130,'48.000,00','50.600,00'],[140,'50.000,00','52.600,00'],[150,'52.000,00','54.600,00'],[160,'54.000,00','56.600,00'],[170,'56.000,00','58.600,00'],[180,'58.000,00','60.600,00'],[190,'60.000,00','62.600,00'],[200,'62.000,00','64.600,00']].map(([pax,v1,v2],i) => (
                 <div key={i} className="inv-table-row">
                   <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 500, color: 'var(--g)' }}>{pax}</span>
                   <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 13, fontWeight: 300, color: 'rgba(250,250,250,.72)', textAlign: 'center' }}>R$ {v1}</span>
@@ -784,12 +642,8 @@ export default function App() {
       </section>
 
       {/* S13 CONTATO (DARK FINAL) */}
-      <section id="contato" className="contato-section" style={{ backgroundColor: 'var(--blk)', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderTop: '.5px solid rgba(44,44,44,.8)', ...gridBg }}>
-        <FadeIn>
-          <div className="contato-logo">
-            <LogoLight height={400} />
-          </div>
-        </FadeIn>
+      <section id="contato" style={{ backgroundColor: 'var(--blk)', padding: isMobile ? '60px 24px' : '96px 56px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', borderTop: '.5px solid rgba(44,44,44,.8)', ...gridBg }}>
+        <FadeIn><LogoLight height={isMobile ? 300 : 400} /></FadeIn>
         <Orn className="my-8" />
         <FadeIn delay={200}>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px,3vw,44px)', fontWeight: 400, color: 'var(--wht)', lineHeight: 1.3, marginBottom: 8 }}>Onde os seus sonhos</h2>
@@ -813,9 +667,9 @@ export default function App() {
         <FadeIn delay={400}>
           <div style={{ borderTop: '.5px solid rgba(44,44,44,.8)', paddingTop: 36, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, width: '100%', maxWidth: 520 }}>
             <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 15, fontWeight: 600, letterSpacing: '.4em', textTransform: 'uppercase', color: 'rgba(250,250,250,.28)' }}>Conheça também nossas casas</span>
-            <div className="unidades-row">
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 12 : 40, alignItems: 'center', fontFamily: "'Cormorant Garamond', serif", fontStyle: 'italic', fontSize: 29, color: 'var(--gl)' }}>
               <span style={{ whiteSpace: 'nowrap' }}>Felicitá Cidade Nova</span>
-              <span className="unidades-sep">·</span>
+              {!isMobile && <span style={{ color: 'var(--g30)' }}>·</span>}
               <span style={{ whiteSpace: 'nowrap' }}>Felicitá Pampulha</span>
             </div>
           </div>
