@@ -163,7 +163,7 @@ const injectStyles = () => {
       .inv-table-row span:nth-child(2) { font-size: 16px !important; color: rgba(250,250,250,.8) !important; display: block !important; margin-bottom: 8px !important; }
       .inv-table-row span:nth-child(2)::before { content: 'Seg · Qui · Dom: ' !important; font-weight: 500 !important; color: var(--g) !important; }
       .inv-table-row span:nth-child(3) { font-size: 16px !important; color: rgba(250,250,250,.8) !important; display: block !important; }
-      .inv-table-row span:nth-child(3)::before { content: 'Sex · Sáb · Feriado: ' !important; font-weight: 500 !important; color: var(--g) !important; }
+      .inv-table-row span:nth-child(3)::before { content: 'Sex · Sáb · Véspera · Feriado: ' !important; font-weight: 500 !important; color: var(--g) !important; }
       #contato { padding: 48px 20px !important; }
       #contato > div:nth-child(4) > div { display: grid !important; grid-template-columns: 1fr !important; gap: 24px !important; }
       #contato > div:nth-child(5) > div { flex-direction: column !important; gap: 16px !important; }
@@ -610,17 +610,17 @@ export default function App() {
                   <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 11, fontWeight: 600, color: 'var(--g)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Convidados</span>
                   <div style={{ textAlign: 'center' }}>
                     <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: '0 0 6px 0', textTransform: 'uppercase' }}>Seg · Qui · Dom</p>
-                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: 0, textTransform: 'uppercase' }}>Sex · Sáb · Feriado</p>
+                    <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 10, letterSpacing: '0.2em', color: 'var(--g)', margin: 0, textTransform: 'uppercase' }}>Sex · Sáb · Véspera · Feriado</p>
                   </div>
                 </div>
               ) : (
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', paddingBottom: 20, marginBottom: 20, borderBottom: '1px solid rgba(255,255,255,.1)' }}>
-                  {['Convidados', 'Seg · Qui · Dom', 'Sex · Sáb · Feriado'].map((h, i) => (
+                  {['Convidados', 'Seg · Qui · Dom', 'Sex · Sáb · Véspera · Feriado'].map((h, i) => (
                     <span key={i} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 9, fontWeight: 600, color: 'var(--g)', letterSpacing: '0.2em', textTransform: 'uppercase', textAlign: i === 0 ? 'left' : 'center' }}>{h}</span>
                   ))}
                 </div>
               )}
-              {[[60,'34.000,00','36.600,00'],[70,'36.000,00','38.600,00'],[80,'38.000,00','40.600,00'],[90,'40.000,00','42.600,00'],[100,'42.000,00','44.600,00'],[110,'44.000,00','46.600,00'],[120,'46.000,00','48.600,00'],[130,'48.000,00','50.600,00'],[140,'50.000,00','52.600,00'],[150,'52.000,00','54.600,00'],[160,'54.000,00','56.600,00'],[170,'56.000,00','58.600,00'],[180,'58.000,00','60.600,00'],[190,'60.000,00','62.600,00'],[200,'62.000,00','64.600,00']].map(([pax,v1,v2],i) => (
+              {[[60,'34.000,00','36.600,00'],[70,'36.000,00','38.600,00'],[80,'38.000,00','40.600,00'],[90,'40.000,00','42.600,00'],[100,'42.000,00','44.600,00'],[110,'44.000,00','46.600,00'],[120,'46.000,00','48.600,00'],[130,'48.000,00','50.600,00'],[140,'50.000,00','52.600,00'],[150,'52.000,00','54.600,00'],[160,'54.000,00','56.600,00'],[170,'56.000,00','58.600,00'],[180,'58.000,00','60.600,00'],].map(([pax,v1,v2],i) => (
                 <div key={i} className="inv-table-row">
                   <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 500, color: 'var(--g)' }}>{pax}</span>
                   <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 13, fontWeight: 300, color: 'rgba(250,250,250,.72)', textAlign: 'center' }}>R$ {v1}</span>
